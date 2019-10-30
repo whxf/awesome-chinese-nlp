@@ -14,17 +14,14 @@
     见文件最下方
 各项返回值具体含义：
     请参考LTP官方文档：https://ltp.readthedocs.io/zh_CN/latest/appendix.html#
-
 """
 import os
 
 from pyltp import SentenceSplitter, Segmentor, Postagger, NamedEntityRecognizer, Parser, SementicRoleLabeller
 
-from config.ltp_config import ltp_model_path
-
 
 class Ltp:
-    def __init__(self, model_dir=ltp_model_path):
+    def __init__(self, model_dir):
         self.model_dir = model_dir
 
         # 分句
@@ -80,7 +77,8 @@ class Ltp:
     def recognize(self, words, postags):
         """
         命名实体识别：
-        1. LTP 采用 BIESO 标注体系：B表示实体开始词；I表示实体中间词；E表示实体结束词；S表示单独成实体；O表示不构成命名实体
+        1. LTP 采用 BIESO 标注体系：B表示实体开始词；I表示实体中间词；E表示实体结束词；
+           S表示单独成实体；O表示不构成命名实体
         2. LTP 提供的命名实体类型为：人名（Nh）；地名（Ns）；机构名（Ni）
         3. B、I、E、S位置标签和实体类型标签之间用一个横线 - 相连；O标签后没有类型标签
         例如：
@@ -122,9 +120,10 @@ class Ltp:
         :return: ltp原生结果
             (arg.name, arg.range.start, arg.range.end) for arg in role.arguments
             第一个词开始的索引依次为0、1、2
-            返回结果 roles 是关于多个谓词的语义角色分析的结果。由于一句话中可能不含有语义角色，所以结果可能为空。
-            role.index 代表谓词的索引， role.arguments 代表关于该谓词的若干语义角色。
-            arg.name 表示语义角色类型，arg.range.start 表示该语义角色起始词位置的索引，arg.range.end 表示该语义角色结束词位置的索引。
+            返回结果 roles 是关于多个谓词的语义角色分析的结果。由于一句话中可能不含有语义角色，所以
+            结果可能为空。role.index 代表谓词的索引， role.arguments 代表关于该谓词的若干语义角
+            色。arg.name 表示语义角色类型，arg.range.start 表示该语义角色起始词位置的索引，
+            arg.range.end 表示该语义角色结束词位置的索引。
         例：
         inputs：
             words = ['元芳', '你', '怎么', '看']
@@ -184,9 +183,8 @@ if __name__ == "__main__":
     sentence = "元芳你怎么看？"
 
     # 初始化
-    ltp_tool = Ltp()
+    ltp_tool = Ltp(os.path.join('..', 'resource', 'ltp_data_v3.4.0'))  # ltp模型存储位置
     print("-----{}-----".format(" 初始化 "))
-
 
     # 长文档分句
     split_out = ltp_tool.split(doc)
