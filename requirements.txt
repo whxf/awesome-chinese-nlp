@@ -3,3 +3,4 @@ python-Levenshtein
 gensim
 pyemd
 simhash
+cocoNLP
