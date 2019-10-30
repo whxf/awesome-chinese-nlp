@@ -5,8 +5,9 @@
 @desc:
 """
 import tools.ltp
+import tools.similarity
 
 __all__ = [
     tools.ltp,
-
+    tools.similarity,
 ]

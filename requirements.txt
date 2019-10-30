@@ -1,1 +1,5 @@
-pyltp
+pyltp==0.2.0
+python-Levenshtein
+gensim
+pyemd
+simhash
