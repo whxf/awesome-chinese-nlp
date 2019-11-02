@@ -6,8 +6,10 @@
 """
 import tools.ltp
 import tools.similarity
+import tools.search
 
 __all__ = [
     tools.ltp,
     tools.similarity,
+    tools.search,
 ]
