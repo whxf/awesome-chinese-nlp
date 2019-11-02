@@ -20,7 +20,7 @@ import numpy as np
 from tools.ltp import Ltp
 
 
-class WordMoverDistance:
+class WordMoverDistance(object):
     """词移距离 Word Mover's Distance"""
 
     def __init__(self, vector_path):
@@ -40,7 +40,7 @@ class WordMoverDistance:
         return distance
 
 
-class WordVectorSimilarity:
+class WordVectorSimilarity(object):
     """
     基于word-vector的句子相似度计算（余弦相似度）
     !!!: 不仅可以使用词向量也可使用字向量

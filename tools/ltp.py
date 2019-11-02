@@ -20,7 +20,7 @@ import os
 from pyltp import SentenceSplitter, Segmentor, Postagger, NamedEntityRecognizer, Parser, SementicRoleLabeller
 
 
-class Ltp:
+class Ltp(object):
     def __init__(self, model_dir):
         self.model_dir = model_dir
 
