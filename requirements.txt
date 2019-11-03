@@ -4,3 +4,4 @@ gensim
 pyemd
 simhash
 cocoNLP
+ngender

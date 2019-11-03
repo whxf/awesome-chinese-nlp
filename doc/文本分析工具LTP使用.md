@@ -9,6 +9,7 @@
 6. 语义角色标注
 
 这些的功能在```tools.ltp``` 中均有实现，下面依次介绍各个部分的使用方法。具体ltp各项功能说明，以及各项标注的含义请见[ltp的官方文档](https://ltp.readthedocs.io/zh_CN/latest/appendix.html#)。下图显示ltp官方的可视化分析结果：
+
 ![image](pic/ltp.png)
 
 
