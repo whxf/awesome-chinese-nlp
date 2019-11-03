@@ -85,7 +85,7 @@ class DFASearch(object):
                 else:  # 未找到对应的记录
                     break
             start += 1
-        return result
+        return list(set(result))
 
 
 if __name__ == "__main__":

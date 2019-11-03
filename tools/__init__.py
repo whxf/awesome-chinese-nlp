@@ -5,11 +5,13 @@
 @desc:
 """
 import tools.ltp
-import tools.similarity
 import tools.search
+import tools.sensitive
+import tools.similarity
 
 __all__ = [
     tools.ltp,
-    tools.similarity,
     tools.search,
+    tools.sensitive,
+    tools.similarity
 ]
