@@ -18,8 +18,8 @@ class DFASearch(object):
     def __init__(self):
         self.keyword_tree = {}  # 词典树
         self.delimit = '\x00'
-        self.word_path = os.path.join("source", "sensitive", "keywords.txt")
-        self.parse(self.word_path)
+        self.__word_path = os.path.join("source", "sensitive", "keywords.txt")
+        self.parse(self.__word_path)
 
     def add_word(self, word):
         """

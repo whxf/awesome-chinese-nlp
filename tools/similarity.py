@@ -25,8 +25,8 @@ class WordMoverDistance(object):
 
     def __init__(self):
         # 初始化词向量模型
-        self.vector_path = os.path.join("source", "sgns.renmin.word.bz2")
-        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.vector_path)
+        self.__vector_path = os.path.join("source", "sgns.renmin.word.bz2")
+        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.__vector_path)
         self.word2vec_model.init_sims(replace=True)  # normalizes vectors
 
     def distance(self, tokens1, tokens2):
@@ -52,8 +52,8 @@ class WordVectorSimilarity(object):
 
         :param vector_dim: 词向量的维度
         """
-        self.vector_path = os.path.join("source", "sgns.renmin.word.bz2")
-        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.vector_path)
+        self.__vector_path = os.path.join("source", "sgns.renmin.word.bz2")
+        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.__vector_path)
         self.vector_dim = vector_dim
 
     def get_word_vector(self, word):

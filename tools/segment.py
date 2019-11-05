@@ -15,14 +15,14 @@ class LtpSegment(object):
     """LTP文档分句 句子分词工具"""
 
     def __init__(self):
-        self.model_dir = os.path.join('source', 'ltp_data_v3.4.0')
+        self.__model_dir = os.path.join('source', 'ltp_data_v3.4.0')
 
         # 分句
         self.splitter = SentenceSplitter()
 
         # 分词
         self.segmentor = Segmentor()
-        self.segmentor.load(os.path.join(self.model_dir, "cws.model"))
+        self.segmentor.load(os.path.join(self.__model_dir, "cws.model"))
 
     def split(self, document):
         """

@@ -27,19 +27,19 @@ class Ltp(LtpSegment):
         super().__init__()
         # 词性标注
         self.postagger = Postagger()
-        self.postagger.load(os.path.join(self.model_dir, "pos.model"))
+        self.postagger.load(os.path.join(self.__model_dir, "pos.model"))
 
         # 命名实体识别
         self.recognizer = NamedEntityRecognizer()
-        self.recognizer.load(os.path.join(self.model_dir, "ner.model"))
+        self.recognizer.load(os.path.join(self.__model_dir, "ner.model"))
 
         # 依存句法分析
         self.parser = Parser()
-        self.parser.load(os.path.join(self.model_dir, "parser.model"))
+        self.parser.load(os.path.join(self.__model_dir, "parser.model"))
 
         # 语义角色标注
         self.labeller = SementicRoleLabeller()
-        self.labeller.load(os.path.join(self.model_dir, "pisrl.model"))
+        self.labeller.load(os.path.join(self.__model_dir, "pisrl.model"))
 
     def postag(self, words):
         """
