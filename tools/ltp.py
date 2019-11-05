@@ -25,6 +25,8 @@ from tools.segment import LtpSegment
 class Ltp(LtpSegment):
     def __init__(self):
         super().__init__()
+        self.__model_dir = os.path.join('source', 'ltp_data_v3.4.0')
+
         # 词性标注
         self.postagger = Postagger()
         self.postagger.load(os.path.join(self.__model_dir, "pos.model"))
