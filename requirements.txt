@@ -1,7 +1,5 @@
 pyltp==0.2.0
-python-Levenshtein
+python-Levenshtein # 句子相似度
 gensim
-pyemd
-simhash
-cocoNLP
 ngender
+networkx
