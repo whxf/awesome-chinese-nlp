@@ -32,7 +32,7 @@
 TODO
 
 
-## 数据库 DATA
+## 数据 DATA
 
 * [词向量](data/词向量.md)
 * [词库](data/词库.md)

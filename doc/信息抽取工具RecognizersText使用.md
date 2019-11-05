@@ -77,7 +77,7 @@ from recognizers_number_with_unit import recognize_age, recognize_currency, reco
 ['1摄氏度']
 ```
 
-## 日期抽取
+## 日期抽取 recognizers_date_time
 
 ```
 >>> s = "科技日报北京11月4日电 (记者张强)谷歌近日发表于《自然》杂志的论文宣布实 现了量子霸权。"
