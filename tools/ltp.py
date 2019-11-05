@@ -20,7 +20,7 @@ import os
 from pyltp import SentenceSplitter, Segmentor, Postagger, NamedEntityRecognizer, Parser, SementicRoleLabeller
 
 
-class Ltp(object):
+class Ltp():
     def __init__(self, model_dir):
         self.model_dir = model_dir
 
@@ -54,7 +54,7 @@ class Ltp(object):
         :return: 句子 list
         """
         sentences = self.splitter.split(document)
-        return list(sentences)
+        return [sentence for sentence in sentences if len(sentence) > 0]
 
     def segment(self, sentence):
         """
