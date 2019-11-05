@@ -14,8 +14,8 @@ from pyltp import SentenceSplitter, Segmentor
 class LtpSegment(object):
     """LTP文档分句 句子分词工具"""
 
-    def __init__(self, model_dir):
-        self.model_dir = model_dir
+    def __init__(self):
+        self.model_dir = os.path.join('source', 'ltp_data_v3.4.0')
 
         # 分句
         self.splitter = SentenceSplitter()

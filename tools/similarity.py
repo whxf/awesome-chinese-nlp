@@ -17,15 +17,16 @@ import os
 import gensim
 import numpy as np
 
-from tools.ltp import Ltp
+from tools.segment import LtpSegment
 
 
 class WordMoverDistance(object):
     """词移距离 Word Mover's Distance"""
 
-    def __init__(self, vector_path):
+    def __init__(self):
         # 初始化词向量模型
-        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(vector_path)
+        self.vector_path = os.path.join("source", "sgns.renmin.word.bz2")
+        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.vector_path)
         self.word2vec_model.init_sims(replace=True)  # normalizes vectors
 
     def distance(self, tokens1, tokens2):
@@ -46,13 +47,13 @@ class WordVectorSimilarity(object):
     !!!: 不仅可以使用词向量也可使用字向量
     """
 
-    def __init__(self, vector_path, vector_dim=300):
+    def __init__(self, vector_dim=300):
         """
 
-        :param vector_path:
         :param vector_dim: 词向量的维度
         """
-        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(vector_path)
+        self.vector_path = os.path.join("source", "sgns.renmin.word.bz2")
+        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.vector_path)
         self.vector_dim = vector_dim
 
     def get_word_vector(self, word):
@@ -105,15 +106,11 @@ class WordVectorSimilarity(object):
 
 
 if __name__ == "__main__":
-    # 资源路径
-    word_vector_path = os.path.join("..", "resource", "sgns.renmin.word.bz2")
-    ltp_model_path = os.path.join("..", "resource", "ltp")
-
     # -------- Begin WordMoverDistance Test --------
     # 初始化 WordMoverDistance
-    sim = WordMoverDistance(word_vector_path)
+    sim = WordMoverDistance()
     # 初始化 LTP 用于分词
-    ltp = Ltp(ltp_model_path)
+    ltp = LtpSegment()
 
     str1 = ltp.segment("我是中国人，我深爱着我的祖国")  # 分词结果为list
     str2 = ltp.segment("中国是我的母亲，我热爱她")
@@ -128,9 +125,9 @@ if __name__ == "__main__":
 
     # -------- Begin WordVectorSimilarity Test --------
     # 初始化 WordVectorSimilarity
-    sim = WordVectorSimilarity(word_vector_path)
+    sim = WordVectorSimilarity()
     # 初始化 LTP 用于分词
-    ltp = Ltp(ltp_model_path)
+    ltp = LtpSegment()
 
     str1 = ltp.segment("我是中国人，我深爱着我的祖国")  # 分词结果为list
     str2 = ltp.segment("中国是我的母亲，我热爱她")

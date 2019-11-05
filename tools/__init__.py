@@ -6,16 +6,18 @@
 """
 import tools.ltp
 import tools.search
-import tools.sensitive
-import tools.similarity
 import tools.segment
+import tools.sensitive
+import tools.sentiment
+import tools.similarity
 import tools.summary
 
 __all__ = [
     tools.ltp,
     tools.search,
-    tools.sensitive,
-    tools.similarity,
     tools.segment,
-    tools.summary
+    tools.sensitive,
+    tools.sentiment,
+    tools.similarity,
+    tools.summary,
 ]

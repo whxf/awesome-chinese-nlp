@@ -18,6 +18,8 @@ class DFASearch(object):
     def __init__(self):
         self.keyword_tree = {}  # 词典树
         self.delimit = '\x00'
+        self.word_path = os.path.join("source", "sensitive", "keywords.txt")
+        self.parse(self.word_path)
 
     def add_word(self, word):
         """
@@ -89,8 +91,6 @@ class DFASearch(object):
 
 
 if __name__ == "__main__":
-    word_path = os.path.join("..", "resource", "sensitive", "keywords.txt")
     dfa = DFASearch()  # 初始化
-    dfa.parse(word_path)  # 添加敏感词文件
     print(dfa.search("hello sexy baby"))  # 查找
     # 结果：['sex']

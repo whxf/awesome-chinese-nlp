@@ -18,8 +18,8 @@ from tools.segment import LtpSegment
 class Summary(object):
     """使用text rank的方式获取文本摘要"""
 
-    def __init__(self, ltp_path):
-        self.ltp_seg_tool = LtpSegment(ltp_path)  # 使用ltp工具进行文档分句和句子分词
+    def __init__(self):
+        self.ltp_seg_tool = LtpSegment()  # 使用ltp工具进行文档分句和句子分词
 
     def calculate_weight(self, words1, words2):
         """
@@ -67,8 +67,7 @@ if __name__ == "__main__":
 据悉，该项研究获得了中国长城量子实验室、国家超级计算广州中心、国家自然科学基金委等单位的支持。
     """
 
-    ltp_path = os.path.join('..', 'resource', 'ltp_data_v3.4.0')  # ltp 模型路径，用于获取分词模型
-    summary_tool = Summary(ltp_path)  # 初始化摘要生成工具
+    summary_tool = Summary()  # 初始化摘要生成工具
     print("\n".join(summary_tool.get_summary(doc, topK=5)))  # 获取摘要
 
     # 该项研究提出了一种依赖于量子纠缠度的模拟算法，开发了通用量子线路模拟器，并在“天河二号”超级计算机上完成了量子霸权测试案例——随机量子线路采样问题的模拟，实际测试了49、64、81、100

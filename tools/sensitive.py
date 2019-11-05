@@ -21,7 +21,6 @@ class Sensitive(DFASearch):
 
 if __name__ == "__main__":
     sen = Sensitive()
-    sen.parse(os.path.join("..", "resource", "sensitive", "keywords.txt"))
     content = "hello sexy baby"
     content_with_mask = sen.mask(content)  # mask掉敏感词
     print(content_with_mask)

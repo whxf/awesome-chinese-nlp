@@ -23,16 +23,15 @@ from tools.segment import LtpSegment
 
 
 class Ltp(LtpSegment):
-    def __init__(self, model_dir):
-        super().__init__(model_dir)
-
+    def __init__(self):
+        super().__init__()
         # 词性标注
         self.postagger = Postagger()
         self.postagger.load(os.path.join(self.model_dir, "pos.model"))
 
         # 命名实体识别
         self.recognizer = NamedEntityRecognizer()
-        self.recognizer.load(os.path.join(model_dir, "ner.model"))
+        self.recognizer.load(os.path.join(self.model_dir, "ner.model"))
 
         # 依存句法分析
         self.parser = Parser()
@@ -40,7 +39,7 @@ class Ltp(LtpSegment):
 
         # 语义角色标注
         self.labeller = SementicRoleLabeller()
-        self.labeller.load(os.path.join(model_dir, "pisrl.model"))
+        self.labeller.load(os.path.join(self.model_dir, "pisrl.model"))
 
     def postag(self, words):
         """
@@ -160,7 +159,7 @@ if __name__ == "__main__":
     sentence = "元芳你怎么看？"
 
     # 初始化
-    ltp_tool = Ltp(os.path.join('..', 'resource', 'ltp_data_v3.4.0'))  # ltp模型存储位置
+    ltp_tool = Ltp()  # ltp模型存储位置
     print("-----{}-----".format(" 初始化 "))
 
     # 长文档分句

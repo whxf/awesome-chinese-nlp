@@ -1,5 +1,6 @@
 pyltp==0.2.0
-python-Levenshtein # 句子相似度
-gensim
-ngender
-networkx
+python-Levenshtein      # 句子相似度
+gensim                  # 词向量
+ngender                 # 判断名字性别
+networkx                # 摘要生成
+recognizers-text-suite  # 信息抽取
