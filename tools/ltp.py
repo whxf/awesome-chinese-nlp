@@ -17,19 +17,14 @@
 """
 import os
 
-from pyltp import SentenceSplitter, Segmentor, Postagger, NamedEntityRecognizer, Parser, SementicRoleLabeller
+from pyltp import Postagger, NamedEntityRecognizer, Parser, SementicRoleLabeller
+
+from tools.segment import LtpSegment
 
 
-class Ltp():
+class Ltp(LtpSegment):
     def __init__(self, model_dir):
-        self.model_dir = model_dir
-
-        # 分句
-        self.splitter = SentenceSplitter()
-
-        # 分词
-        self.segmentor = Segmentor()
-        self.segmentor.load(os.path.join(self.model_dir, "cws.model"))
+        super().__init__(model_dir)
 
         # 词性标注
         self.postagger = Postagger()
@@ -46,24 +41,6 @@ class Ltp():
         # 语义角色标注
         self.labeller = SementicRoleLabeller()
         self.labeller.load(os.path.join(model_dir, "pisrl.model"))
-
-    def split(self, document):
-        """
-        长文档分句
-        :param document: str
-        :return: 句子 list
-        """
-        sentences = self.splitter.split(document)
-        return [sentence for sentence in sentences if len(sentence) > 0]
-
-    def segment(self, sentence):
-        """
-        句子分词
-        :param sentence: str
-        :return:  词语 list
-        """
-        words = self.segmentor.segment(sentence)
-        return list(words)
 
     def postag(self, words):
         """

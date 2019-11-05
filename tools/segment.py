@@ -2,7 +2,9 @@
 @author: Li Xi
 @file: segment.py
 @time: 2019/11/5 13:28
-@desc:
+@desc: Ltp工具基本
+仅包括Ltp文档分句和句子分词的功能
+具体使用方法参考：tools.ltp
 """
 import os
 
