@@ -13,9 +13,6 @@
 ![image](pic/ltp.png)
 
 
-
-
-
 ## 初始化工具
 
 在使用LTP工具前需要对工具初始化，初始化的时候需要加载对应版本的ltp模型。
@@ -25,7 +22,7 @@
 >>> from tools.ltp import Ltp
 >>>
 >>> # 初始化ltp工具
->>> ltp_tool = Ltp(os.path.join('..', 'resource', 'ltp_data_v3.4.0'))  # ltp模型存储位置 
+>>> ltp_tool = Ltp()  # ltp模型存储位置
 ```
 
 以下面内容为例介绍各种功能：
