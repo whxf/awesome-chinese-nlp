@@ -22,12 +22,9 @@ from tools.segment import LtpSegment
 
 class WordMoverDistance(object):
     """词移距离 Word Mover's Distance"""
-
-    def __init__(self):
-        # 初始化词向量模型
-        self.__vector_path = os.path.join("source", "sgns.renmin.word.bz2")
-        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.__vector_path)
-        self.word2vec_model.init_sims(replace=True)  # normalizes vectors
+    __vector_path = os.path.join("source", "sgns.renmin.word.bz2")
+    word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(__vector_path)
+    word2vec_model.init_sims(replace=True)  # normalizes vectors
 
     def distance(self, tokens1, tokens2):
         """
@@ -46,14 +43,14 @@ class WordVectorSimilarity(object):
     基于word-vector的句子相似度计算（余弦相似度）
     !!!: 不仅可以使用词向量也可使用字向量
     """
+    __vector_path = os.path.join("source", "sgns.renmin.word.bz2")
+    word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(__vector_path)
 
     def __init__(self, vector_dim=300):
         """
 
         :param vector_dim: 词向量的维度
         """
-        self.__vector_path = os.path.join("source", "sgns.renmin.word.bz2")
-        self.word2vec_model = gensim.models.KeyedVectors.load_word2vec_format(self.__vector_path)
         self.vector_dim = vector_dim
 
     def get_word_vector(self, word):

@@ -13,16 +13,14 @@ from pyltp import SentenceSplitter, Segmentor
 
 class LtpSegment(object):
     """LTP文档分句 句子分词工具"""
+    __model_dir = os.path.join('source', 'ltp_data_v3.4.0')
 
-    def __init__(self):
-        self.__model_dir = os.path.join('source', 'ltp_data_v3.4.0')
+    # 分句
+    splitter = SentenceSplitter()
 
-        # 分句
-        self.splitter = SentenceSplitter()
-
-        # 分词
-        self.segmentor = Segmentor()
-        self.segmentor.load(os.path.join(self.__model_dir, "cws.model"))
+    # 分词
+    segmentor = Segmentor()
+    segmentor.load(os.path.join(__model_dir, "cws.model"))
 
     def split(self, document):
         """
@@ -41,10 +39,3 @@ class LtpSegment(object):
         """
         words = self.segmentor.segment(sentence)
         return list(words)
-
-    def release(self):
-        """
-        释放模型
-        :return:
-        """
-        self.segmentor.release()

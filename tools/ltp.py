@@ -23,25 +23,26 @@ from tools.segment import LtpSegment
 
 
 class Ltp(LtpSegment):
+    __model_dir = os.path.join('source', 'ltp_data_v3.4.0')
+
+    # 词性标注
+    postagger = Postagger()
+    postagger.load(os.path.join(__model_dir, "pos.model"))
+
+    # 命名实体识别
+    recognizer = NamedEntityRecognizer()
+    recognizer.load(os.path.join(__model_dir, "ner.model"))
+
+    # 依存句法分析
+    parser = Parser()
+    parser.load(os.path.join(__model_dir, "parser.model"))
+
+    # 语义角色标注
+    labeller = SementicRoleLabeller()
+    labeller.load(os.path.join(__model_dir, "pisrl.model"))
+
     def __init__(self):
         super().__init__()
-        self.__model_dir = os.path.join('source', 'ltp_data_v3.4.0')
-
-        # 词性标注
-        self.postagger = Postagger()
-        self.postagger.load(os.path.join(self.__model_dir, "pos.model"))
-
-        # 命名实体识别
-        self.recognizer = NamedEntityRecognizer()
-        self.recognizer.load(os.path.join(self.__model_dir, "ner.model"))
-
-        # 依存句法分析
-        self.parser = Parser()
-        self.parser.load(os.path.join(self.__model_dir, "parser.model"))
-
-        # 语义角色标注
-        self.labeller = SementicRoleLabeller()
-        self.labeller.load(os.path.join(self.__model_dir, "pisrl.model"))
 
     def postag(self, words):
         """
@@ -142,17 +143,6 @@ class Ltp(LtpSegment):
 
         return list(ret_entity)
 
-    def release(self):
-        """
-        释放模型
-        :return:
-        """
-        self.segmentor.release()
-        self.postagger.release()
-        self.recognizer.release()
-        self.parser.release()
-        self.labeller.release()
-
 
 if __name__ == "__main__":
     doc = "“元芳体”的创意来源于古装侦探系列电视剧《神探狄仁杰》。" \
@@ -200,7 +190,3 @@ if __name__ == "__main__":
     ne = ltp_tool.get_name_entity(sentence, "Nh")  # 获取人名
     print("-----{}-----".format(" 获取句子中特定的命名实体集 "))
     print(' '.join(ne))
-
-    # 模型释放
-    ltp_tool.release()
-    print("-----{}-----".format(" 模型释放 "))

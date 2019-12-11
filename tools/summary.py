@@ -17,9 +17,7 @@ from tools.segment import LtpSegment
 
 class Summary(object):
     """使用text rank的方式获取文本摘要"""
-
-    def __init__(self):
-        self.ltp_seg_tool = LtpSegment()  # 使用ltp工具进行文档分句和句子分词
+    ltp_seg_tool = LtpSegment()  # 使用ltp工具进行文档分句和句子分词
 
     def calculate_weight(self, words1, words2):
         """
